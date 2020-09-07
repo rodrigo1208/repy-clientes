@@ -1,11 +1,14 @@
 package br.com.rodrigocardoso.repy.entities;
 
+import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -20,19 +23,7 @@ public class Cliente extends PanacheEntityBase {
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(name = "id", columnDefinition =  "uuid")
 	public UUID id;
-
 	public String nome;
-	
-	public void setId(UUID id) {
-		this.id = id;
-	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + nome + "]";
-	}
+	@OneToMany( cascade = CascadeType.ALL )
+	public List<Telefone> telefones;
 }

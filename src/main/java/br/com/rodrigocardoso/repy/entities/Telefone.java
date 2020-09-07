@@ -5,6 +5,7 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -18,4 +19,6 @@ public class Telefone extends PanacheEntityBase {
 	public UUID id;
 	public String descricao;
 	public String numero;
+	@ManyToOne
+	public Cliente cliente;
 }
